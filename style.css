@@ -1,0 +1,416 @@
+/* ===========================
+   1. Reset / Base Styles
+=========================== */
+
+/* Reset margin, padding and set box-sizing for consistency */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===========================
+   2. Root Variables
+=========================== */
+:root {
+  /* Base font size for easy rem scaling */
+  font-size: 62.5%; /* 1rem = 10px */
+  --body-font-size: 1.6rem;
+
+  /* ===========================
+     Color Palette
+  ============================ */
+  --color-header-bg: linear-gradient(90deg, #1f2028 0%, #2c2f3a 100%);
+  --color-hero-bg: linear-gradient(180deg, #1f2028 0%, #111217 100%);
+  --color-bg: #1f2028;
+  --color-text: #222;
+  --color-white: #fff;
+  --color-black: #000;
+  --color-muted: #a9adc1;
+  --color-link: #d1d5e0;
+  --color-primary: #ffc107;
+  --color-primary-active: #ffdd57;
+  --color-secondary: #007bff;
+
+  /* ===========================
+     Layout / Dimensions
+  ============================ */
+  --header-height: 7rem;
+  --nav-gap: 2.5rem;
+  --hero-max-width: 80rem;
+  --hero-img-width: 17rem;
+  --btn-radius: 2rem;
+  --btn-padding: 1rem 1.5rem;
+}
+
+/* Smooth scrolling for anchor links */
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+/* Body styles */
+body {
+  font-size: var(--body-font-size);
+  font-family: "Rubik", Arial, sans-serif;
+  color: var(--color-black);
+  background-color: var(--color-bg);
+}
+
+/* ===========================
+   3. Header / Navigation
+=========================== */
+
+/* Fixed header */
+header {
+  width: 100%;
+  height: var(--header-height);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background: var(--color-header-bg);
+  transition: background-color 0.5s ease;
+}
+
+/* Navigation wrapper */
+.nav-bar {
+  max-width: 120rem;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+}
+
+/* Flex container for logo + links */
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: var(--header-height);
+}
+
+/* Logo / Name styling */
+.nav-container span {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+.nav-container span:hover {
+  transform: scale(1.2);
+  will-change: transform;
+}
+
+/* Desktop navigation links */
+.nav-container ul {
+  display: flex;
+  list-style: none;
+  gap: var(--nav-gap);
+  flex-wrap: wrap;
+}
+
+/* Individual link styling */
+.nav-container ul li a {
+  font-size: 1.6rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  transition: color 0.3s;
+  color: var(--color-link);
+  text-decoration: none;
+}
+
+/* Hover & active states */
+.nav-container ul li a:hover {
+  color: var(--color-primary);
+}
+
+.nav-container ul li a:active {
+  color: var(--color-primary-active);
+}
+
+/* Underline animation on hover */
+.nav-container ul li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 0.2rem;
+  background-color: var(--color-primary);
+  transition: width 0.3s;
+}
+
+.nav-container ul li a:hover::after {
+  width: 100%;
+}
+
+/* ===========================
+   4. Hamburger / Mobile Icon
+=========================== */
+
+/* Hamburger icon wrapper */
+.menu-icon {
+  width: 3rem;
+  height: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+/* Hamburger lines */
+.menu-icon span {
+  display: block;
+  height: 0.3rem;
+  width: 100%;
+  background-color: var(--color-white);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform-origin: center;
+}
+
+/* Active / Cross state */
+.menu-icon.active span:nth-child(1) {
+  transform: rotate(45deg);
+  position: absolute;
+  top: 50%;
+}
+
+.menu-icon.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-icon.active span:nth-child(3) {
+  transform: rotate(-45deg);
+  position: absolute;
+  top: 50%;
+}
+
+/* ===========================
+   5. Mobile Menu Styles
+=========================== */
+
+.mobile-menu {
+  position: absolute;
+  top: 105%;
+  right: 1rem;
+  width: 22rem;
+  background: rgba(31, 32, 40, 0.95);
+  backdrop-filter: blur(8px);
+  border: 0.1rem solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.2rem;
+  box-shadow: 0 0.8rem 2.5rem rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-1.2rem);
+  transition: all 0.3s ease-in-out;
+  z-index: 9999;
+}
+
+.mobile-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem 0;
+}
+
+.mobile-menu li {
+  border-bottom: 0.1rem solid rgba(255, 255, 255, 0.08);
+}
+
+.mobile-menu li:last-child {
+  border-bottom: none;
+}
+
+.mobile-menu a {
+  display: block;
+  padding: 1rem 1.5rem;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--color-link);
+  transition: all 0.3s ease;
+  letter-spacing: 0.05rem;
+}
+
+.mobile-menu a:hover {
+  background: var(--color-link);
+  color: var(--color-text);
+  padding-left: 2rem;
+}
+
+/* Show menu when active */
+.mobile-menu.show {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===========================
+   6. Hero Section
+=========================== */
+
+.hero-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  background: var(--color-hero-bg);
+  flex-wrap: wrap;
+}
+
+.hero-content {
+  flex: 1 1 40rem;
+  max-width: 70%;
+  text-align: center;
+  padding: 2rem;
+  margin: 0 auto;
+}
+
+/* Hero profile image */
+.hero-content img {
+  width: clamp(10rem, 40%, var(--hero-img-width));
+  max-width: 100%;
+  height: auto;
+  margin: 1rem auto;
+  display: block;
+}
+
+/* Hero title */
+.hero-title {
+  font-size: clamp(2.8rem, 5vw, 6rem);
+  color: var(--color-white);
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+/* Hero subtitle */
+.hero-subtitle {
+  color: var(--color-muted);
+  line-height: 1.6;
+  font-size: clamp(1.4rem, 2vw, 1.7rem);
+  margin-bottom: 2rem;
+}
+
+/* Connect / CTA button */
+.connect-btn {
+  display: inline-block;
+  padding: var(--btn-padding);
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: var(--btn-radius);
+  background-color: var(--color-primary);
+  transition: all 0.3s;
+  text-align: center;
+}
+
+.connect-btn:hover {
+  box-shadow: 0 0.5rem 1.5rem rgba(255, 193, 7, 0.4);
+}
+
+/* ===========================
+   7. Responsive Breakpoints
+=========================== */
+
+/* Large tablets / small desktops */
+@media (max-width: 1200px) {
+  :root {
+    font-size: 58%;
+  }
+}
+
+/* Tablets */
+@media (max-width: 992px) {
+  :root {
+    font-size: 55%;
+  }
+  .nav-container ul {
+    display: none; /* hide desktop links */
+  }
+}
+
+/* Large mobile */
+@media (max-width: 768px) {
+  :root {
+    font-size: 52%;
+  }
+  .hero-section {
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem;
+  }
+  .hero-content {
+    flex: 1 1 auto;
+    max-width: 95%;
+    padding: 1.5rem;
+  }
+  .hero-content img {
+    width: clamp(8rem, 50%, var(--hero-img-width));
+  }
+}
+
+/* Small mobile */
+@media (max-width: 576px) {
+  :root {
+    font-size: 50%;
+  }
+  .hero-content {
+    gap: 1rem;
+  }
+  .hero-section {
+    min-height: 70vh;
+  }
+  .hero-content img {
+    object-fit: contain;
+    width: clamp(7rem, 60%, var(--hero-img-width));
+  }
+  .connect-btn {
+    width: 100%;
+    text-align: center;
+  }
+  .menu-icon {
+    width: 3.5rem;
+    height: 2.5rem;
+  }
+  .menu-icon span {
+    height: 0.35rem;
+  }
+  .mobile-menu a {
+    padding: 1rem 1.8rem;
+  }
+}
+
+/* Extra small mobile */
+@media (max-width: 375px) {
+  :root {
+    font-size: 45%;
+  }
+  .hero-content {
+    gap: 1.5rem;
+  }
+  .hero-content img {
+    width: clamp(6rem, 70%, var(--hero-img-width));
+  }
+  .connect-btn {
+    padding: 0.7rem 1.2rem;
+    font-size: 1.4rem;
+  }
+  .menu-icon {
+    width: 4rem;
+    height: 2.8rem;
+  }
+  .menu-icon span {
+    height: 0.4rem;
+  }
+}
