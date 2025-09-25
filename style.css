@@ -60,11 +60,9 @@ body {
 }
 
 /* ===========================
-   3. Header / Navigation
+   1. Fixed Header
 =========================== */
-
-/* Fixed header */
-header {
+.header {
   width: 100%;
   height: var(--header-height);
   position: fixed;
@@ -75,24 +73,27 @@ header {
   transition: background-color 0.5s ease;
 }
 
-/* Navigation wrapper */
-.nav-bar {
+/* ===========================
+   2. Navigation Wrapper
+=========================== */
+.nav {
   max-width: 120rem;
   margin: 0 auto;
   padding: 0 2rem;
   position: relative;
 }
 
-/* Flex container for logo + links */
-.nav-container {
+.nav__container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: var(--header-height);
 }
 
-/* Logo / Name styling */
-.nav-container span {
+/* ===========================
+   3. Logo
+=========================== */
+.nav__logo {
   font-size: 2.5rem;
   font-weight: 600;
   color: var(--color-primary);
@@ -100,21 +101,22 @@ header {
   cursor: pointer;
 }
 
-.nav-container span:hover {
+.nav__logo:hover {
   transform: scale(1.2);
   will-change: transform;
 }
 
-/* Desktop navigation links */
-.nav-container ul {
+/* ===========================
+   4. Desktop Navigation Links
+=========================== */
+.nav__links {
   display: flex;
   list-style: none;
   gap: var(--nav-gap);
   flex-wrap: wrap;
 }
 
-/* Individual link styling */
-.nav-container ul li a {
+.nav__link a {
   font-size: 1.6rem;
   font-weight: 500;
   padding: 0.5rem 1rem;
@@ -126,17 +128,16 @@ header {
   text-decoration: none;
 }
 
-/* Hover & active states */
-.nav-container ul li a:hover {
+.nav__link a:hover {
   color: var(--color-primary);
 }
 
-.nav-container ul li a:active {
+.nav__link a:active {
   color: var(--color-primary-active);
 }
 
 /* Underline animation on hover */
-.nav-container ul li a::after {
+.nav__link a::after {
   content: "";
   position: absolute;
   left: 0;
@@ -147,16 +148,14 @@ header {
   transition: width 0.3s;
 }
 
-.nav-container ul li a:hover::after {
+.nav__link a:hover::after {
   width: 100%;
 }
 
 /* ===========================
-   4. Hamburger / Mobile Icon
+   5. Hamburger / Mobile Icon
 =========================== */
-
-/* Hamburger icon wrapper */
-.menu-icon {
+.nav__menu-icon {
   width: 3rem;
   height: 2rem;
   display: flex;
@@ -167,8 +166,7 @@ header {
   z-index: 1001;
 }
 
-/* Hamburger lines */
-.menu-icon span {
+.nav__menu-line {
   display: block;
   height: 0.3rem;
   width: 100%;
@@ -179,27 +177,26 @@ header {
 }
 
 /* Active / Cross state */
-.menu-icon.active span:nth-child(1) {
+.nav__menu-icon.active .nav__menu-line:nth-child(1) {
   transform: rotate(45deg);
   position: absolute;
   top: 50%;
 }
 
-.menu-icon.active span:nth-child(2) {
+.nav__menu-icon.active .nav__menu-line:nth-child(2) {
   opacity: 0;
 }
 
-.menu-icon.active span:nth-child(3) {
+.nav__menu-icon.active .nav__menu-line:nth-child(3) {
   transform: rotate(-45deg);
   position: absolute;
   top: 50%;
 }
 
 /* ===========================
-   5. Mobile Menu Styles
+   6. Mobile Menu
 =========================== */
-
-.mobile-menu {
+.nav__mobile-menu {
   position: absolute;
   top: 105%;
   right: 1rem;
@@ -217,21 +214,21 @@ header {
   z-index: 9999;
 }
 
-.mobile-menu ul {
+.nav__mobile-menu ul {
   list-style: none;
   margin: 0;
   padding: 0.5rem 0;
 }
 
-.mobile-menu li {
+.nav__mobile-link {
   border-bottom: 0.1rem solid rgba(255, 255, 255, 0.08);
 }
 
-.mobile-menu li:last-child {
+.nav__mobile-link:last-child {
   border-bottom: none;
 }
 
-.mobile-menu a {
+.nav__mobile-link a {
   display: block;
   padding: 1rem 1.5rem;
   text-decoration: none;
@@ -242,24 +239,24 @@ header {
   letter-spacing: 0.05rem;
 }
 
-.mobile-menu a:hover {
+.nav__mobile-link a:hover {
   background: var(--color-link);
   color: var(--color-text);
   padding-left: 2rem;
 }
 
 /* Show menu when active */
-.mobile-menu.show {
+.nav__mobile-menu.show {
   visibility: visible;
   opacity: 1;
   transform: translateY(0);
 }
 
 /* ===========================
-   6. Hero Section
+   7. Hero Section
 =========================== */
 
-.hero-section {
+.hero {
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -270,7 +267,7 @@ header {
   flex-wrap: wrap;
 }
 
-.hero-content {
+.hero__content {
   flex: 1 1 40rem;
   max-width: 70%;
   text-align: center;
@@ -279,7 +276,7 @@ header {
 }
 
 /* Hero profile image */
-.hero-content img {
+.hero__content img {
   width: clamp(10rem, 40%, var(--hero-img-width));
   max-width: 100%;
   height: auto;
@@ -288,7 +285,7 @@ header {
 }
 
 /* Hero title */
-.hero-title {
+.hero__title {
   font-size: clamp(2.8rem, 5vw, 6rem);
   color: var(--color-white);
   margin-bottom: 1rem;
@@ -296,7 +293,7 @@ header {
 }
 
 /* Hero subtitle */
-.hero-subtitle {
+.hero__subtitle {
   color: var(--color-muted);
   line-height: 1.6;
   font-size: clamp(1.4rem, 2vw, 1.7rem);
@@ -304,7 +301,7 @@ header {
 }
 
 /* Connect / CTA button */
-.connect-btn {
+.hero__button {
   display: inline-block;
   padding: var(--btn-padding);
   font-weight: 500;
@@ -315,12 +312,12 @@ header {
   text-align: center;
 }
 
-.connect-btn:hover {
+.hero__button:hover {
   box-shadow: 0 0.5rem 1.5rem rgba(255, 193, 7, 0.4);
 }
 
 /* ===========================
-   7. Responsive Breakpoints
+   . Responsive Breakpoints
 =========================== */
 
 /* Large tablets / small desktops */

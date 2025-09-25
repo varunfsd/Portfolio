@@ -50,39 +50,39 @@
     <!-- ===============================
          Header Section
     ================================ -->
-    <header>
-      <nav class="nav-bar">
-        <div class="nav-container">
+    <header class="header">
+      <nav class="nav">
+        <div class="nav__container">
           <!-- Website Logo / Name -->
-          <span>Varun Marineni</span>
+          <span class="nav__logo">Varun Marineni</span>
 
           <!-- Desktop Navigation Links -->
-          <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About Me</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#blog">Resume</a></li>
-            <li><a href="#contact">Contact</a></li>
+          <ul class="nav__links">
+            <li class="nav__link"><a href="#home">Home</a></li>
+            <li class="nav__link"><a href="#about">About Me</a></li>
+            <li class="nav__link"><a href="#projects">Projects</a></li>
+            <li class="nav__link"><a href="#portfolio">Portfolio</a></li>
+            <li class="nav__link"><a href="#resume">Resume</a></li>
+            <li class="nav__link"><a href="#contact">Contact</a></li>
           </ul>
 
           <!-- Mobile Menu Icon (Hamburger) -->
-          <div class="menu-icon">
-            <span></span>
-            <span></span>
-            <span></span>
+          <div class="nav__menu-icon">
+            <span class="nav__menu-line"></span>
+            <span class="nav__menu-line"></span>
+            <span class="nav__menu-line"></span>
           </div>
         </div>
 
         <!-- Hidden Mobile Menu (Visible on small screens) -->
-        <div class="mobile-menu">
+        <div class="nav__mobile-menu">
           <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About Me</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#blog">Blog</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li class="nav__mobile-link"><a href="#home">Home</a></li>
+            <li class="nav__mobile-link"><a href="#about">About Me</a></li>
+            <li class="nav__mobile-link"><a href="#projects">Projects</a></li>
+            <li class="nav__mobile-link"><a href="#portfolio">Portfolio</a></li>
+            <li class="nav__mobile-link"><a href="#resume">Resume</a></li>
+            <li class="nav__mobile-link"><a href="#contact">Contact</a></li>
           </ul>
         </div>
       </nav>
@@ -95,35 +95,37 @@
       <!-- ===========================
            Hero / Landing Section
       ============================ -->
-      <section id="home" class="hero-section">
-        <div class="hero-container">
-          <div class="hero-content">
-            <!-- Profile Image -->
+      <section id="home" class="hero hero--light">
+        <div class="hero__container">
+          <div class="hero__content">
             <img
               src="images/profile-picture.png"
               alt="Portrait of Varun Marineni"
-              class="hero-image"
+              class="hero__image"
             />
 
-            <!-- Hero Title / Welcome Message -->
-            <h1 class="hero-title">
+            <h1 class="hero__title">
               Hey, I'm Varun! <br />
               Welcome to my corner of the internet!
             </h1>
 
-            <!-- Hero Subtitle / Description -->
-            <p class="hero-subtitle">
+            <p class="hero__subtitle">
               A student and coding enthusiast with hands-on experience in web
               development, aiming to become a Software Engineer and coding
               specialist.
             </p>
 
-            <!-- Call-to-Action Button -->
-            <span class="connect-btn">CONNECT WITH ME</span>
+            <span class="hero__button hero__button--primary"
+              >CONNECT WITH ME</span
+            >
           </div>
         </div>
       </section>
+
       <section class="sec"></section>
+      <section class="about-me">
+        <div class="about-me__container"></div>
+      </section>
     </main>
   </body>
 </html>
