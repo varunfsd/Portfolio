@@ -1,8 +1,6 @@
 /* ===========================
    1. Reset / Base Styles
 =========================== */
-
-/* Reset margin, padding and set box-sizing for consistency */
 *,
 *::before,
 *::after {
@@ -15,67 +13,66 @@
    2. Root Variables
 =========================== */
 :root {
-  /* Base font size for easy rem scaling */
-  font-size: 62.5%; /* 1rem = 10px */
-  --body-font-size: 1.6rem;
-
-  /* ===========================
-     Color Palette
-  ============================ */
-  --color-header-bg: linear-gradient(90deg, #1f2028 0%, #2c2f3a 100%);
-  --color-hero-bg: linear-gradient(180deg, #1f2028 0%, #111217 100%);
+  /* General Colors */
   --color-bg: #1f2028;
-  --color-text: #222;
+  --color-hero-bg: linear-gradient(180deg, #1f2028 0%, #111217 100%);
+  --color-header-bg: linear-gradient(90deg, #1f2028 0%, #2c2f3a 100%);
+
+  /* Section Backgrounds */
+  --color-section-bg-1: #1f2028;
+  --color-section-bg-2: #252832;
+  --color-section-bg-3: #111217;
+  --color-section-bg-4: #2a2d3b;
+
+  /* Card / overlay */
+  --color-card-bg: rgba(255, 255, 255, 0.05);
+  --color-card-bg-alt: rgba(255, 255, 255, 0.08);
+
+  /* Text & Links */
+  --color-text: #ddd;
+  --color-muted: #a9adc1;
   --color-white: #fff;
   --color-black: #000;
-  --color-muted: #a9adc1;
   --color-link: #d1d5e0;
   --color-primary: #ffc107;
   --color-primary-active: #ffdd57;
   --color-secondary: #007bff;
 
-  /* ===========================
-     Layout / Dimensions
-  ============================ */
+  /* Layout / Dimensions */
   --header-height: 7rem;
-  --nav-gap: 2.5rem;
+  --nav-gap: 2rem;
   --hero-max-width: 80rem;
   --hero-img-width: 17rem;
   --btn-radius: 2rem;
   --btn-padding: 1rem 1.5rem;
+  --body-font-size: 1.6rem;
 }
 
-/* Smooth scrolling for anchor links */
+/* ===========================
+   3. Global Styles
+=========================== */
 html {
-  font-size: 62.5%;
+  font-size: 62.5%; /* 1rem = 10px */
   scroll-behavior: smooth;
 }
 
-/* Body styles */
 body {
   font-size: var(--body-font-size);
   font-family: "Rubik", Arial, sans-serif;
-  color: var(--color-black);
+  color: var(--color-text);
   background-color: var(--color-bg);
 }
 
 /* ===========================
-   1. Fixed Header
+   4. Header / Navigation
 =========================== */
 .header {
   width: 100%;
   height: var(--header-height);
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
   background: var(--color-header-bg);
   transition: background-color 0.5s ease;
 }
 
-/* ===========================
-   2. Navigation Wrapper
-=========================== */
 .nav {
   max-width: 120rem;
   margin: 0 auto;
@@ -90,25 +87,16 @@ body {
   height: var(--header-height);
 }
 
-/* ===========================
-   3. Logo
-=========================== */
+/* Logo */
 .nav__logo {
   font-size: 2.5rem;
   font-weight: 600;
   color: var(--color-primary);
-  transition: all 0.5s;
+  transition: transform 0.5s;
   cursor: pointer;
 }
 
-.nav__logo:hover {
-  transform: scale(1.2);
-  will-change: transform;
-}
-
-/* ===========================
-   4. Desktop Navigation Links
-=========================== */
+/* Desktop Navigation Links */
 .nav__links {
   display: flex;
   list-style: none;
@@ -136,7 +124,7 @@ body {
   color: var(--color-primary-active);
 }
 
-/* Underline animation on hover */
+/* Underline animation */
 .nav__link a::after {
   content: "";
   position: absolute;
@@ -152,13 +140,11 @@ body {
   width: 100%;
 }
 
-/* ===========================
-   5. Hamburger / Mobile Icon
-=========================== */
+/* Hamburger / Mobile Icon */
 .nav__menu-icon {
   width: 3rem;
   height: 2rem;
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: space-between;
   position: relative;
@@ -176,7 +162,7 @@ body {
   transform-origin: center;
 }
 
-/* Active / Cross state */
+/* Hamburger active / cross state */
 .nav__menu-icon.active .nav__menu-line:nth-child(1) {
   transform: rotate(45deg);
   position: absolute;
@@ -193,9 +179,7 @@ body {
   top: 50%;
 }
 
-/* ===========================
-   6. Mobile Menu
-=========================== */
+/* Mobile Menu */
 .nav__mobile-menu {
   position: absolute;
   top: 105%;
@@ -241,11 +225,11 @@ body {
 
 .nav__mobile-link a:hover {
   background: var(--color-link);
-  color: var(--color-text);
+  color: var(--color-black);
   padding-left: 2rem;
 }
 
-/* Show menu when active */
+/* Show mobile menu */
 .nav__mobile-menu.show {
   visibility: visible;
   opacity: 1;
@@ -253,13 +237,12 @@ body {
 }
 
 /* ===========================
-   7. Hero Section
+   5. Hero Section
 =========================== */
-
 .hero {
-  min-height: 100vh;
+  min-height: calc(100vh - var(--header-height));
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   text-align: center;
   padding: 2rem;
@@ -275,7 +258,6 @@ body {
   margin: 0 auto;
 }
 
-/* Hero profile image */
 .hero__content img {
   width: clamp(10rem, 40%, var(--hero-img-width));
   max-width: 100%;
@@ -284,7 +266,6 @@ body {
   display: block;
 }
 
-/* Hero title */
 .hero__title {
   font-size: clamp(2.8rem, 5vw, 6rem);
   color: var(--color-white);
@@ -292,7 +273,6 @@ body {
   line-height: 1.2;
 }
 
-/* Hero subtitle */
 .hero__subtitle {
   color: var(--color-muted);
   line-height: 1.6;
@@ -300,10 +280,10 @@ body {
   margin-bottom: 2rem;
 }
 
-/* Connect / CTA button */
 .hero__button {
   display: inline-block;
   padding: var(--btn-padding);
+  color: var(--color-black);
   font-weight: 500;
   cursor: pointer;
   border-radius: var(--btn-radius);
@@ -317,97 +297,170 @@ body {
 }
 
 /* ===========================
-   . Responsive Breakpoints
+   6. Preloader / Loading Animation
 =========================== */
 
-/* Large tablets / small desktops */
-@media (max-width: 1200px) {
-  :root {
-    font-size: 58%;
+/* Preloader overlay */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--color-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Loader bars container */
+.loader-bars {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-end;
+  height: 4rem;
+}
+
+/* Individual bars */
+.loader-bars span {
+  display: block;
+  width: 0.8rem;
+  height: 2rem;
+  background-color: var(--color-primary);
+  animation: bounce 0.7s infinite ease-in-out;
+  border-radius: 0.3rem;
+}
+
+/* Odd/even animation delay */
+.loader-bars span:nth-child(odd) {
+  animation-delay: 0s;
+}
+.loader-bars span:nth-child(even) {
+  animation-delay: 0.3s;
+}
+
+/* Bounce keyframes */
+@keyframes bounce {
+  0%,
+  100% {
+    height: 3rem;
+  }
+  50% {
+    height: 6rem;
   }
 }
 
-/* Tablets */
+/* ===========================
+   . Responsive Breakpoints
+=========================== */
+@media (max-width: 1400px) {
+  :root {
+    font-size: 61%;
+  }
+}
+@media (max-width: 1200px) {
+  :root {
+    font-size: 59%;
+  }
+}
+@media (max-width: 1024px) {
+  :root {
+    font-size: 57%;
+  }
+}
 @media (max-width: 992px) {
   :root {
     font-size: 55%;
   }
-  .nav-container ul {
-    display: none; /* hide desktop links */
-  }
 }
-
-/* Large mobile */
 @media (max-width: 768px) {
   :root {
-    font-size: 52%;
+    font-size: 53%;
   }
-  .hero-section {
+  .hero {
     flex-direction: column;
-    align-items: center;
     padding: 1.5rem;
   }
-  .hero-content {
-    flex: 1 1 auto;
+  .hero__content {
     max-width: 95%;
     padding: 1.5rem;
   }
-  .hero-content img {
+  .hero__content img {
     width: clamp(8rem, 50%, var(--hero-img-width));
   }
+  .nav__links {
+    display: none;
+  }
+  .nav__menu-icon {
+    display: flex;
+  }
 }
-
-/* Small mobile */
 @media (max-width: 576px) {
   :root {
-    font-size: 50%;
+    font-size: 51%;
   }
-  .hero-content {
-    gap: 1rem;
-  }
-  .hero-section {
+  .hero {
     min-height: 70vh;
   }
-  .hero-content img {
-    object-fit: contain;
+  .hero__content {
+    gap: 1rem;
+  }
+  .hero__content img {
     width: clamp(7rem, 60%, var(--hero-img-width));
   }
-  .connect-btn {
+  .hero__button {
     width: 100%;
-    text-align: center;
   }
-  .menu-icon {
+  .nav__menu-icon {
     width: 3.5rem;
     height: 2.5rem;
   }
-  .menu-icon span {
+  .nav__menu-line {
     height: 0.35rem;
   }
-  .mobile-menu a {
+  .nav__mobile-link a {
     padding: 1rem 1.8rem;
   }
 }
-
-/* Extra small mobile */
+@media (max-width: 480px) {
+  :root {
+    font-size: 49%;
+  }
+  .hero__content img {
+    width: clamp(6.2rem, 65%, var(--hero-img-width));
+  }
+  .hero__button {
+    font-size: 1.5rem;
+  }
+}
+@media (max-width: 425px) {
+  :root {
+    font-size: 48%;
+  }
+  .hero__content img {
+    width: clamp(6.5rem, 65%, var(--hero-img-width));
+  }
+}
 @media (max-width: 375px) {
   :root {
-    font-size: 45%;
+    font-size: 46%;
   }
-  .hero-content {
+  .hero__content {
     gap: 1.5rem;
   }
-  .hero-content img {
+  .hero__content img {
     width: clamp(6rem, 70%, var(--hero-img-width));
   }
-  .connect-btn {
+  .hero__button {
     padding: 0.7rem 1.2rem;
     font-size: 1.4rem;
   }
-  .menu-icon {
+  .nav__menu-icon {
     width: 4rem;
     height: 2.8rem;
   }
-  .menu-icon span {
+  .nav__menu-line {
     height: 0.4rem;
   }
 }
