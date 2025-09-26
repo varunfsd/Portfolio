@@ -235,7 +235,6 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
-
 /* ===========================
    5. Hero Section
 =========================== */
@@ -291,9 +290,14 @@ body {
   transition: all 0.3s;
   text-align: center;
 }
-
 .hero__button:hover {
   box-shadow: 0 0.5rem 1.5rem rgba(255, 193, 7, 0.4);
+}
+/* Make buttons mobile-friendly */
+.hero__button {
+  -webkit-tap-highlight-color: transparent; /* Chrome, Safari, Android */
+  -moz-tap-highlight-color: transparent; /* Firefox */
+  -ms-tap-highlight-color: transparent; /* IE */
 }
 
 /* ===========================
@@ -400,9 +404,9 @@ body {
   :root {
     font-size: 51%;
   }
-  .hero {
+  /* .hero {
     min-height: 70vh;
-  }
+  } */
   .hero__content {
     gap: 1rem;
   }
