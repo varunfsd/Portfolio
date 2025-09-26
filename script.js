@@ -2,44 +2,52 @@
    1. Hamburger / Mobile Menu
 =========================== */
 
-// Select the hamburger menu icon
+// Select the hamburger menu icon element
 const hamburgerIcon = document.querySelector(".nav__menu-icon");
 
 // Select the mobile menu container
 const mobileMenu = document.querySelector(".nav__mobile-menu");
 
-// Toggle mobile menu visibility and hamburger animation on click
+// Add a click event listener to the hamburger icon
 hamburgerIcon.addEventListener("click", () => {
-  hamburgerIcon.classList.toggle("active"); // Animate hamburger icon (cross)
-  mobileMenu.classList.toggle("show"); // Show / hide mobile menu
+  // Toggle the "active" class to animate the hamburger into a cross
+  hamburgerIcon.classList.toggle("active");
+
+  // Toggle the "show" class to display or hide the mobile menu
+  mobileMenu.classList.toggle("show");
 });
+
 
 /* ===========================
    2. Preloader / Loading Screen
 =========================== */
 
-// Select preloader container
+// Select the preloader element
 const preloader = document.getElementById("preloader");
 
-// Minimum time (in ms) to display preloader
-const MIN_PRELOADER_TIME = 1500; // 1.5 seconds
+// Minimum time (in milliseconds) to display the preloader
+const MIN_PRELOADER_TIME = 1500;
 
-// Record the time when the script runs
+// Record the start time when the script runs
 const startTime = Date.now();
 
 // Wait until the page fully loads
 window.addEventListener("load", () => {
-  const elapsedTime = Date.now() - startTime; // Time already spent loading
-  const remainingTime = Math.max(MIN_PRELOADER_TIME - elapsedTime, 0); // Ensure minimum display
+  // Calculate how much time has already elapsed
+  const elapsedTime = Date.now() - startTime;
 
-  // Wait remaining time if needed, then fade out preloader
+  // Calculate remaining time to meet minimum display duration
+  const remainingTime = Math.max(MIN_PRELOADER_TIME - elapsedTime, 0);
+
+  // Wait for the remaining time if needed
   setTimeout(() => {
-    preloader.style.opacity = "0"; // Start fade-out
+    // Start fading out the preloader
+    preloader.style.opacity = "0";
     preloader.style.transition = "opacity 0.5s ease";
 
-    // After fade-out, remove preloader from view
+    // After fade-out completes, hide the preloader completely
     setTimeout(() => {
       preloader.style.display = "none";
-    }, 500); // Matches fade-out duration
+    }, 500); // matches the CSS transition duration
   }, remainingTime);
 });
