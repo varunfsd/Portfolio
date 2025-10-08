@@ -13,22 +13,18 @@
    2. Root Variables
 =========================== */
 :root {
-  /* General Colors */
-  --color-bg: #1f2028;
+  /* --color-bg: #1f2028;
   --color-hero-bg: linear-gradient(180deg, #1f2028 0%, #111217 100%);
   --color-header-bg: linear-gradient(90deg, #1f2028 0%, #2c2f3a 100%);
 
-  /* Section Backgrounds */
   --color-section-bg-1: #1f2028;
   --color-section-bg-2: #252832;
   --color-section-bg-3: #111217;
   --color-section-bg-4: #2a2d3b;
 
-  /* Card / overlay */
   --color-card-bg: rgba(255, 255, 255, 0.05);
   --color-card-bg-alt: rgba(255, 255, 255, 0.08);
 
-  /* Text & Links */
   --color-text: #ddd;
   --color-muted: #a9adc1;
   --color-white: #fff;
@@ -36,10 +32,43 @@
   --color-link: #d1d5e0;
   --color-primary: #ffc107;
   --color-primary-active: #ffdd57;
-  --color-secondary: #007bff;
+  --color-secondary: #007bff; */
+
+  /* ===== Base / Backgrounds ===== */
+  --color-bg: #ffffff; /* Main page background */
+  --color-hero-bg: #f8f9fa; /* Slightly lighter hero/background sections */
+  --color-header-bg: #f1f3f5; /* Header / navigation background */
+
+  /* ===== Section Backgrounds ===== */
+  --color-section-bg-1: #ffffff; /* Main section background */
+  --color-section-bg-2: #f8f9fa; /* Alternating section background */
+  --color-section-bg-3: #e9ecef; /* Muted / secondary sections */
+  --color-section-bg-4: #dee2e6; /* Footer or dividers */
+
+  /* ===== Cards / Panels ===== */
+  --color-card-bg: #ffffff; /* Card or panel background */
+  --color-card-bg-alt: rgba(0, 0, 0, 0.04); /* Subtle overlay/shadow */
+
+  /* ===== Text Colors ===== */
+  --color-text: #212529; /* Primary text */
+  --color-muted: #6c757d; /* Secondary text / captions */
+  --color-heading: #000000; /* Headings / emphasis */
+  --color-link: #343a40; /* Links or clickable text */
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* ===== Neutral Accents ===== */
+  --color-primary: #000000; /* Buttons, highlights, main accents */
+  --color-primary-active: #343a40; /* Hover/active states */
+  --color-secondary: #6c757d; /* Minor UI elements / dividers */
+
+  /* ===== Feedback Colors (Optional) ===== */
+  --color-success: #4caf50; /* Green for success states */
+  --color-error: #ef5350; /* Red for errors */
+  --color-warning: #ffc107; /* Yellow for warnings */
 
   /* Layout / Dimensions */
-  --header-height: 7rem;
+  --header-height: 8.5rem;
   --nav-gap: 2rem;
   --hero-max-width: 80rem;
   --hero-img-width: 17rem;
@@ -59,6 +88,7 @@ body {
   font-family: "Rubik", Arial, sans-serif;
   color: var(--color-text);
   background-color: var(--color-bg);
+  overflow: hidden;
 }
 
 /* ===========================
@@ -76,15 +106,27 @@ body {
   margin: 0 auto;
   padding: 0 2rem;
   position: relative;
+  transition: all 0.3s ease; /* smooth transition */
 }
+.nav.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; /* take full width */
+  max-width: 100%; /* override 120rem */
+  background: var(--color-header-bg);
+  z-index: 1000; /* keep it above content */
 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transform: translateY(0); /* slide in */
+  opacity: 1;
+}
 .nav__container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: var(--header-height);
 }
-
 /* Logo */
 .nav__logo {
   font-size: clamp(2rem, 2.5vw, 2.5rem);
@@ -154,7 +196,7 @@ body {
   display: block;
   height: 0.3rem;
   width: 100%;
-  background-color: var(--color-white);
+  background-color: var(--color-primary);
   border-radius: 2px;
   transition: transform 0.3s ease, opacity 0.3s ease;
   transform-origin: center;
@@ -216,13 +258,13 @@ body {
   text-decoration: none;
   font-size: clamp(1.4rem, 2.5vw, 1.6rem);
   font-weight: 500;
-  color: var(--color-link);
+  color: var(--color-white);
   transition: transform 0.3s ease, background 0.3s ease;
   letter-spacing: 0.05rem;
 }
 
 .nav__mobile-link a:hover {
-  background: var(--color-link);
+  background: var(--color-white);
   color: var(--color-black);
   transform: translateX(0.3rem);
 }
@@ -238,6 +280,7 @@ body {
    5. Hero Section
 =========================== */
 .hero {
+  scroll-margin-top: var(--header-height);
   min-height: calc(100dvh - var(--header-height));
   display: flex;
   flex-wrap: wrap;
@@ -269,7 +312,7 @@ body {
   font-size: clamp(2.8rem, 5vw, 6rem);
   margin-bottom: clamp(0.8rem, 2vw, 1.2rem);
   line-height: 1.2;
-  color: var(--color-white);
+  color: var(--color-text);
 }
 
 .hero__subtitle {
@@ -283,7 +326,7 @@ body {
   font-size: clamp(1.3rem, 2.5vw, 1.6rem);
   padding: clamp(0.8rem, 2vw, 1.2rem) clamp(1.2rem, 3vw, 1.8rem);
   display: inline-block;
-  color: var(--color-black);
+  color: var(--color-white);
   font-weight: 500;
   cursor: pointer;
   border-radius: var(--btn-radius);
@@ -295,7 +338,211 @@ body {
 }
 
 .hero__button:hover {
-  box-shadow: 0 0.5rem 1.5rem rgba(255, 193, 7, 0.4);
+  background-color: var(--color-bg);
+  color: var(--color-primary);
+  border: 0.6px solid var(--color-secondary);
+}
+
+/* ===========================
+   About Me Section
+=========================== */
+#about-me {
+  background-color: var(--color-section-bg-1);
+  padding: clamp(2rem, 5vw, 5rem) clamp(1rem, 4vw, 2rem);
+}
+
+.about-me__container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(1rem, 2vw, 2rem);
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.about-me__intro,
+.about-me__skills {
+  flex: 1 1 450px;
+  background-color: var(--color-card-bg);
+  /* border: 0.6px solid var(--color-link); */
+  border-radius: 12px;
+  padding: clamp(1.5rem, 3vw, 2rem);
+  box-shadow: 0 8px 20px var(--color-card-bg-alt);
+}
+
+/* Title */
+.about-me__title {
+  color: var(--color-text);
+  font-size: clamp(1.8rem, 8vw, 5rem);
+  margin-bottom: clamp(0.5rem, 1.5vw, 1rem);
+  font-weight: 700;
+}
+
+/* Description */
+.about-me__description {
+  color: var(--color-muted);
+  line-height: 1.7;
+  margin-bottom: clamp(1.5rem, 3vw, 2rem);
+  font-size: clamp(1rem, 2.5vw, 1.6rem);
+}
+
+/* Stats */
+.about-me__stats {
+  display: flex;
+  gap: clamp(1rem, 2vw, 2rem);
+  flex-wrap: wrap;
+}
+
+.about-me__stat {
+  border: 1px solid var(--color-link);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: clamp(1rem, 2vw, 1.5rem) clamp(1rem, 2vw, 2rem);
+  border-radius: 10px;
+  flex: 1 1 120px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.05);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.about-me__stat:hover {
+  transform: translateY(-5px);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.about-me__stat-number {
+  color: var(--color-primary);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 700;
+}
+
+.about-me__stat-label {
+  color: var(--color-muted);
+  font-size: clamp(0.9rem, 2.5vw, 1.6rem);
+}
+
+/* Skills */
+.about-me__skills-title {
+  color: var(--color-primary);
+  font-size: clamp(1.8rem, 8vw, 5rem);
+  margin-bottom: clamp(0.5rem, 1.5vw, 1rem);
+  font-weight: 600;
+}
+
+.about-me__skills-description {
+  color: var(--color-muted);
+  line-height: 1.6;
+  margin-bottom: clamp(1.5rem, 3vw, 2rem);
+  font-size: clamp(1rem, 2.5vw, 1.6rem);
+}
+
+/* Skill Bars */
+.about-me__skill-bars {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* exactly 4 columns */
+  gap: clamp(0.5rem, 1vw, 1rem);
+  text-align: center; /* center text inside each cell */
+}
+
+.about-me__skill {
+  padding: 1rem;
+  font-weight: 500;
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  border-radius: 5px;
+  cursor: pointer;
+
+  display: flex; /* center text vertically & horizontally */
+  align-items: center;
+  justify-content: center;
+
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.about-me__skill:hover {
+  background-color: var(--color-primary-active);
+  transform: translateY(-3px);
+}
+
+/* ===========================
+   Projects Section
+=========================== */
+.projects {
+  background-color: var(--color-section-bg-2);
+  padding: clamp(3rem, 6vw, 6rem) 0; /* vertical padding only */
+}
+
+.projects__container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 4vw, 2rem); /* side padding */
+}
+
+/* Intro */
+.projects__intro {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto clamp(2rem, 6vw, 4rem);
+}
+
+.projects__title {
+  font-size: clamp(2rem, 5vw, 4.2rem);
+  color: var(--color-black);
+  margin-bottom: clamp(0.5rem, 2vw, 1rem);
+  font-weight: 700;
+}
+
+.projects__subtitle {
+  font-size: clamp(1rem, 3vw, 1.8rem);
+  color: var(--color-muted);
+  line-height: 1.6;
+}
+
+/* Grid layout */
+.projects__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(1.5rem, 3vw, 2rem);
+}
+
+/* Single project card */
+.project {
+  background-color: var(--color-bg);
+  border-radius: clamp(0.5rem, 2vw, 1rem);
+  overflow: hidden;
+  box-shadow: 0 8px 20px var(--color-card-bg-alt);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.project:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.project__image {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 16/9;
+}
+
+.project__name {
+  font-size: clamp(1.2rem, 2.8vw, 1.8rem); /* bigger title */
+  font-weight: 600;
+  margin: clamp(0.8rem, 2vw, 1.2rem);
+  color: var(--color-black);
+}
+
+.project__description {
+  font-size: clamp(1rem, 2.5vw, 1.2rem); /* slightly larger body */
+  color: var(--color-muted);
+  margin: 0 clamp(0.8rem, 2vw, 1.2rem) clamp(0.8rem, 2vw, 1.2rem);
+  line-height: 1.7; /* more breathing room */
 }
 
 /* ===========================
@@ -303,11 +550,13 @@ body {
     =========================== */
 #preloader {
   position: fixed;
-  top: var(--header-height);
+  top: 0;
+  /* top: var(--header-height); */
   left: 0;
   width: 100%;
-  height: calc(100dvh - var(--header-height));
-  background-color: #1f2028;
+  /* height: calc(100dvh - var(--header-height)); */
+  height: 100%;
+  background-color: var(--color-primary-active);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -324,7 +573,7 @@ body {
 .loader-bars span {
   width: 0.8rem;
   height: 3rem;
-  background-color: #ffc107;
+  background-color: var(--color-white);
   border-radius: 4px;
   animation: escalator 0.5s ease-in-out infinite;
 }
@@ -356,6 +605,33 @@ body {
   50% {
     transform: translateY(-20px);
   }
+}
+/* ==========================================================================
+   Animate Container - Fade + Pop Effect
+   --------------------------------------------------------------------------
+   Purpose:
+   Adds a smooth "fade-in + pop-up" animation to any element with the class
+   `.animate-container` when the class `.visible` is added (e.g., on scroll).
+
+   Usage:
+   1. Add `animate-container` to any section/div you want to animate.
+   2. Add the `visible` class via JavaScript or Intersection Observer when
+      the element comes into view.
+
+   Effect:
+   - opacity: 0 → 1 (fade-in)
+   - translateY: 50px → 0px (slide-up)
+   - scale: 0.8 → 1 (pop effect)
+============================================================================= */
+.animate-container {
+  opacity: 0;
+  transform: translateY(50px) scale(0.8);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate-container.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 
 /* ===========================
