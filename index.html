@@ -2,30 +2,30 @@
 <html lang="en">
   <head>
     <!-- ===============================
-     Meta Information
-=============================== -->
+         Meta Information
+    ================================ -->
     <meta charset="UTF-8" />
+    <!-- Ensures the website is responsive on all devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- SEO-related meta tags -->
     <meta
       name="description"
       content="Varun Marineni – Portfolio showcasing web development projects, frontend skills, blog, and creative work."
     />
-
     <meta
       name="keywords"
       content="Varun Marineni, Portfolio, Frontend Developer, Web Developer, Projects"
     />
-
     <meta name="author" content="Varun Marineni" />
 
     <!-- ===============================
-         Favicon
+         Favicon (tab icon)
     ================================ -->
     <link rel="icon" href="favicon.ico" />
 
     <!-- ===============================
-         Google Fonts
+         Google Fonts (Rubik)
     ================================ -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -37,7 +37,9 @@
     <!-- ===============================
          CSS and JS
     ================================ -->
+    <!-- External stylesheet -->
     <link rel="stylesheet" href="style.css" />
+    <!-- External JS file (defer ensures it loads after HTML parsing) -->
     <script defer src="script.js"></script>
 
     <!-- ===============================
@@ -48,10 +50,12 @@
 
   <body>
     <!-- ===========================
-       Preloader / Loading Animation
-  ============================ -->
+         Preloader / Loading Animation
+         (Appears before page loads fully)
+    ============================ -->
     <div id="preloader">
       <div class="loader-bars">
+        <!-- Animated bars for loading effect -->
         <span></span>
         <span></span>
         <span></span>
@@ -62,7 +66,7 @@
     </div>
 
     <!-- ===============================
-         Header Section
+         Header Section (Navigation)
     ================================ -->
     <header class="header">
       <nav class="nav">
@@ -72,15 +76,15 @@
 
           <!-- Desktop Navigation Links -->
           <ul class="nav__links">
-            <li class="nav__link"><a href="#home">Home</a></li>
-            <li class="nav__link"><a href="#about">About Me</a></li>
-            <li class="nav__link"><a href="#projects">Projects</a></li>
-            <li class="nav__link"><a href="#portfolio">Portfolio</a></li>
-            <li class="nav__link"><a href="#toolbox">Toolbox</a></li>
-            <li class="nav__link"><a href="#contact">Contact</a></li>
+            <li class="nav__link"><a data-target="home">Home</a></li>
+            <li class="nav__link"><a data-target="about-me">About Me</a></li>
+            <li class="nav__link"><a data-target="projects">Projects</a></li>
+            <li class="nav__link"><a data-target="portfolio">Portfolio</a></li>
+            <li class="nav__link"><a data-target="toolbox">Toolbox</a></li>
+            <li class="nav__link"><a data-target="contact">Contact</a></li>
           </ul>
 
-          <!-- Mobile Menu Icon (Hamburger) -->
+          <!-- Hamburger Menu Icon (For Mobile Navigation) -->
           <div class="nav__menu-icon">
             <span class="nav__menu-line"></span>
             <span class="nav__menu-line"></span>
@@ -88,15 +92,25 @@
           </div>
         </div>
 
-        <!-- Hidden Mobile Menu (Visible on small screens) -->
+        <!-- Hidden Mobile Menu (Visible on small screens when toggled) -->
         <div class="nav__mobile-menu">
-          <ul>
-            <li class="nav__mobile-link"><a href="#home">Home</a></li>
-            <li class="nav__mobile-link"><a href="#about">About Me</a></li>
-            <li class="nav__mobile-link"><a href="#projects">Projects</a></li>
-            <li class="nav__mobile-link"><a href="#portfolio">Portfolio</a></li>
-            <li class="nav__mobile-link"><a href="#resume">Resume</a></li>
-            <li class="nav__mobile-link"><a href="#contact">Contact</a></li>
+          <ul class="nav__mobile-links">
+            <li class="nav__mobile-link"><a data-target="home">Home</a></li>
+            <li class="nav__mobile-link">
+              <a data-target="about-me">About Me</a>
+            </li>
+            <li class="nav__mobile-link">
+              <a data-target="projects">Projects</a>
+            </li>
+            <li class="nav__mobile-link">
+              <a data-target="portfolio">Portfolio</a>
+            </li>
+            <li class="nav__mobile-link">
+              <a data-target="toolbox">Resume</a>
+            </li>
+            <li class="nav__mobile-link">
+              <a data-target="contact">Contact</a>
+            </li>
           </ul>
         </div>
       </nav>
@@ -112,31 +126,155 @@
       <section id="home" class="hero hero--light">
         <div class="hero__container">
           <div class="hero__content">
+            <!-- Profile Image -->
             <img
               src="images/profile-picture.png"
               alt="Portrait of Varun Marineni"
               class="hero__image"
             />
 
+            <!-- Hero Title -->
             <h1 class="hero__title">
               Hey, I'm Varun! <br />
               Welcome to my corner of the internet!
             </h1>
 
+            <!-- Short Subtitle / Tagline -->
             <p class="hero__subtitle">
               A student and coding enthusiast with hands-on experience in web
               development, aiming to become a Software Engineer.
             </p>
 
-            <span class="hero__button hero__button--primary"
-              >CONNECT WITH ME</span
-            >
+            <!-- Call to Action Button -->
+            <span class="hero__button hero__button--primary">
+              CONNECT WITH ME
+            </span>
           </div>
         </div>
       </section>
 
-      <section class="about-me">
-        <div class="about-me__container"></div>
+      <!-- ===========================
+           About Me Section
+      ============================ -->
+      <section id="about-me">
+        <div class="about-me__container">
+          <!-- Introduction -->
+          <div class="about-me__intro animate-container">
+            <h2 class="about-me__title">I Love being a developer!</h2>
+            <p class="about-me__description">
+              Hello, I’m Varun, a 20-year-old aspiring developer. I started
+              programming in 2023 and am passionate about building web
+              applications and learning new technologies. Alongside programming,
+              I enjoy studying startups and business strategies. Outside of
+              coding, I like playing badminton and watching movies.
+            </p>
+
+            <!-- Stats -->
+            <div class="about-me__stats">
+              <div class="about-me__stat">
+                <span class="about-me__stat-number">4</span>
+                <p class="about-me__stat-label">Completed Projects</p>
+              </div>
+              <div class="about-me__stat">
+                <span class="about-me__stat-number">2</span>
+                <p class="about-me__stat-label">Positive Reviews</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Skills Section -->
+          <div class="about-me__skills animate-container">
+            <h6 class="about-me__skills-title">Skills</h6>
+            <p class="about-me__skills-description">
+              Here you can see my skills. One of the fascinations of the
+              computer world is the momentary changes of technologies, but I try
+              to update my knowledge every day and experience new technologies.
+            </p>
+
+            <!-- Skills List -->
+            <div class="about-me__skill-bars">
+              <span class="about-me__skill">HTML</span>
+              <span class="about-me__skill">CSS</span>
+              <span class="about-me__skill">JavaScript</span>
+              <span class="about-me__skill">React</span>
+              <span class="about-me__skill">Express</span>
+              <span class="about-me__skill">Node</span>
+              <span class="about-me__skill">MongoDB</span>
+              <span class="about-me__skill">Mongoose</span>
+              <span class="about-me__skill">Java</span>
+              <span class="about-me__skill">MySQL</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- ===============================
+     Projects Section
+     - ID: projects
+     - Purpose: Showcase completed projects in a grid layout
+     - Structure:
+       * projects__intro → Contains section heading and subtitle
+       * projects__grid → Holds individual project cards
+       * project → Single project card (image, name, description)
+=============================== -->
+      <section id="projects" class="projects">
+        <div class="projects__container animate-container">
+          <div class="projects__intro">
+            <h2 class="projects__title">What have I created?</h2>
+            <p class="projects__subtitle">
+              Building ideas into reality has always excited me — here are some
+              of the projects I’ve created and shared with the world.
+            </p>
+          </div>
+
+          <div class="projects__grid">
+            <!-- Single Project -->
+            <div class="project">
+              <img
+                src="images/puretones-portfolio-preview.png"
+                alt="Project 1 screenshot"
+                class="project__image"
+              />
+              <h3 class="project__name">Pure Tones Saloon</h3>
+              <p class="project__description">
+                A responsive web app for booking salon services and contacting
+                the salon. Built using HTML, CSS, JavaScript for the frontend,
+                and PHP + MySQL on the backend. Features include service
+                listings, appointment booking, and email contact via Brevo SMTP.
+              </p>
+            </div>
+
+            <div class="project">
+              <img
+                src="images/advanced-bankist-portfolio-preview.png"
+                alt="Project 2 screenshot"
+                class="project__image"
+              />
+              <h3 class="project__name">Advanced Bankist</h3>
+              <p class="project__description">
+                An interactive, fully responsive JavaScript web app
+                demonstrating UI/UX features like sticky navigation, smooth
+                scrolling, tabbed content, image sliders, modals, lazy loading,
+                and scroll-reveal animations. Built with vanilla JS (ES6+),
+                HTML5, CSS3, and the Intersection Observer API.
+              </p>
+            </div>
+
+            <div class="project">
+              <img
+                src="images/personal-portfolio-preview.png"
+                alt="Project 3 screenshot"
+                class="project__image"
+              />
+              <h3 class="project__name">Personal Portfolio</h3>
+              <p class="project__description">
+                A modern, fully responsive personal portfolio website to
+                showcase my projects, skills, and achievements. Built with HTML,
+                CSS, and JavaScript, featuring smooth scroll animations,
+                reusable components, and a clean UI design.
+              </p>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
   </body>
