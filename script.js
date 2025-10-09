@@ -64,9 +64,7 @@ window.addEventListener("load", () => {
 =========================== */
 
 // Select elements
-const sections = document.querySelectorAll(
-  ".animate-container"
-);
+const sections = document.querySelectorAll(".animate-container");
 
 // Use Intersection Observer
 const observer = new IntersectionObserver(
@@ -135,3 +133,85 @@ const headObserver = new IntersectionObserver(
   }
 );
 headObserver.observe(header);
+
+/* =====================================================
+   TESTIMONIAL SLIDER
+   =====================================================
+   Handles:
+     - Slide movement (left/right)
+     - Dot navigation
+     - Active slide highlighting
+===================================================== */
+
+let currentSlide = 0;
+const slides = document.querySelectorAll(".testimonials__slide");
+const btnNext = document.querySelector(".testimonials__btn--right");
+const btnPrev = document.querySelector(".testimonials__btn--left");
+const dotsContainer = document.querySelector(".testimonials__dots");
+
+// Create navigation dots dynamically
+slides.forEach((_, i) => {
+  const dot = document.createElement("span");
+  if (i === 0) dot.classList.add("active");
+  dot.addEventListener("click", () => goToSlide(i));
+  dotsContainer.appendChild(dot);
+});
+const dots = dotsContainer.querySelectorAll("span");
+
+// Move to a specific slide
+function goToSlide(index) {
+  slides.forEach(slide => slide.classList.remove("active"));
+  dots.forEach(dot => dot.classList.remove("active"));
+
+  slides[index].classList.add("active");
+  dots[index].classList.add("active");
+  currentSlide = index;
+}
+
+// Navigation functions
+function nextSlide() {
+  goToSlide(currentSlide === slides.length - 1 ? 0 : currentSlide + 1);
+}
+
+function prevSlide() {
+  goToSlide(currentSlide === 0 ? slides.length - 1 : currentSlide - 1);
+}
+
+// Event listeners
+btnNext.addEventListener("click", nextSlide);
+btnPrev.addEventListener("click", prevSlide);
+
+// Initialize slider
+goToSlide(0);
+
+// === Mobile Swipe Support ===
+const slider = document.querySelector(".testimonials__slider");
+let touchStartX = 0;
+let touchEndX = 0;
+const swipeThreshold = 50; // Minimum px to consider a swipe
+
+slider.addEventListener("touchstart", (e) => {
+  touchStartX = e.touches[0].clientX;
+});
+
+slider.addEventListener("touchmove", (e) => {
+  touchEndX = e.touches[0].clientX;
+});
+
+slider.addEventListener("touchend", () => {
+  const swipeDistance = touchStartX - touchEndX;
+
+  if (Math.abs(swipeDistance) > swipeThreshold) {
+    if (swipeDistance > 0) {
+      // Swiped left → next slide
+      nextSlide();
+    } else {
+      // Swiped right → previous slide
+      prevSlide();
+    }
+  }
+
+  // Reset values
+  touchStartX = 0;
+  touchEndX = 0;
+});
