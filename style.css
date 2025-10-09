@@ -393,7 +393,8 @@ body {
 }
 
 .about-me__stat {
-  border: 1px solid var(--color-link);
+  /* border: 1px solid var(--color-link); */
+  border: 1px dashed var(--color-link);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -516,6 +517,7 @@ body {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
+  /* justify-content: space-between; */
   cursor: pointer;
 }
 
@@ -528,21 +530,43 @@ body {
   width: 100%;
   display: block;
   object-fit: cover;
-  aspect-ratio: 16/9;
+  /* aspect-ratio: 16/9; */
 }
 
 .project__name {
-  font-size: clamp(1.2rem, 2.8vw, 1.8rem); /* bigger title */
+  font-size: clamp(1.2rem, 2.8vw, 2rem); /* bigger title */
+  font-size: clamp(1.4rem, 4vw, 2rem);
   font-weight: 600;
   margin: clamp(0.8rem, 2vw, 1.2rem);
   color: var(--color-black);
 }
 
 .project__description {
-  font-size: clamp(1rem, 2.5vw, 1.2rem); /* slightly larger body */
+  font-size: clamp(1rem, 2.5vw, 1.6rem);
   color: var(--color-muted);
-  margin: 0 clamp(0.8rem, 2vw, 1.2rem) clamp(0.8rem, 2vw, 1.2rem);
-  line-height: 1.7; /* more breathing room */
+  /* margin: 0 clamp(0.8rem, 2vw, 1.2rem) clamp(0.8rem, 2vw, 1.2rem); */
+  margin: 0 clamp(0.8rem, 2vw, 1.2rem);
+  line-height: 1.6; /* more breathing room */
+}
+.project__button {
+  display: inline-block;
+  /* margin: 1rem clamp(0.8rem, 2vw, 1.2rem); */
+  margin: 1rem clamp(0.8rem, 2vw, 1.2rem) 1.5rem;
+  padding: 0.6rem 1.2rem;
+  background-color: var(--color-black);
+  background-color: #333;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+   align-self: flex-start;
+}
+
+.project__button:hover {
+  background-color: var(--color-link);
+  /* color: var(--color-black); */
 }
 
 /* ===========================
