@@ -94,6 +94,7 @@ sections.forEach((section) => {
 const handleNavClick = function (event) {
   const targetId = event.target.dataset.target;
   const targetSection = document.getElementById(targetId); // Find the section by ID
+  console.log(targetSection);
   if (!targetSection) return; // safety check
   targetSection.scrollIntoView({ behavior: "smooth", block: "center" });
 };

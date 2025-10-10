@@ -73,6 +73,12 @@
   --hero-max-width: 80rem;
   --hero-img-width: 17rem;
   --btn-radius: 2rem;
+  --radius: 10px;
+  --shadow: 0 10px 28px rgba(17, 24, 39, 0.06);
+  --container-max: 1200px;
+  --gap: 32px;
+  --form-gap: 18px;
+  --input-height: 52px;
 }
 
 /* ===========================
@@ -489,14 +495,14 @@ body {
 }
 
 .projects__title {
-  font-size: clamp(2rem, 5vw, 4.2rem);
+  font-size: clamp(3rem, 5vw, 4.2rem);
   color: var(--color-black);
   margin-bottom: clamp(0.5rem, 2vw, 1rem);
   font-weight: 700;
 }
 
 .projects__subtitle {
-  font-size: clamp(1rem, 3vw, 1.8rem);
+  font-size: clamp(1.2rem, 5vw, 1.8rem);
   color: var(--color-muted);
   line-height: 1.6;
 }
@@ -542,7 +548,7 @@ body {
 }
 
 .project__description {
-  font-size: clamp(1rem, 2.5vw, 1.6rem);
+  font-size: clamp(1.2rem, 5vw, 1rem);
   color: var(--color-muted);
   /* margin: 0 clamp(0.8rem, 2vw, 1.2rem) clamp(0.8rem, 2vw, 1.2rem); */
   margin: 0 clamp(0.8rem, 2vw, 1.2rem);
@@ -626,6 +632,17 @@ body {
   padding: clamp(4rem, 6vw, 6rem) 2rem; /* vertical padding responsive */
   background-color: var(--color-section-bg-3);
   text-align: center;
+  background-image: linear-gradient(
+    45deg,
+    #d6dade 12.5%,
+    transparent 0,
+    transparent 50%,
+    #d6dade 0,
+    #d6dade 62.5%,
+    transparent 0,
+    transparent
+  );
+  background-size: 5px 5px;
 }
 
 .testimonials__container {
@@ -640,14 +657,14 @@ body {
 }
 
 .testimonials__title {
-  font-size: clamp(2rem, 5vw, 3.2rem); /* responsive title size */
+  font-size: clamp(3rem, 5vw, 4.2rem);
   font-weight: 700;
   margin-bottom: clamp(0.5rem, 2vw, 1rem);
   color: var(--color-black);
 }
 
 .testimonials__subtitle {
-  font-size: clamp(1rem, 3vw, 1.6rem);
+  font-size: clamp(1.2rem, 5vw, 1.8rem);
   color: var(--color-muted);
 }
 
@@ -747,7 +764,55 @@ body {
   color: #777;
   margin: 0;
 }
+/* ===== Slider Controls ===== */
+.testimonials__btn {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  border: none;
+  background: rgba(255, 255, 255, 0.7);
+  font-family: inherit;
+  border-radius: 50%;
+  height: 5.5rem;
+  width: 5.5rem;
+  font-size: 3.25rem;
+  cursor: pointer;
+}
 
+.testimonials__btn:hover {
+  background-color: #555;
+}
+
+.testimonials__btn--left {
+  left: 7%;
+  transform: translate(-50%, -50%);
+}
+
+.testimonials__btn--right {
+  right: 7%;
+  transform: translate(50%, -50%);
+}
+
+/* ===== Slider Dots ===== */
+.testimonials__dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  gap: 0.5rem;
+}
+
+.testimonials__dots span {
+  display: block;
+  width: 12px;
+  height: 12px;
+  background-color: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.testimonials__dots span.active {
+  background-color: #222;
+}
 /* ===========================
    Experience Section
 =========================== */
@@ -784,9 +849,9 @@ body {
 
 /* ----- Experience Items ----- */
 .experience__items {
-  display:flex;
+  display: flex;
   justify-content: center;
-  gap:2.5rem;
+  gap: 2.5rem;
   flex-wrap: wrap;
 }
 
@@ -893,54 +958,415 @@ body {
   margin-bottom: 0.5rem;
 }
 
-/* ===== Slider Controls ===== */
-.testimonials__btn {
-  position: absolute;
-  top: 50%;
-  z-index: 10;
-  border: none;
-  background: rgba(255, 255, 255, 0.7);
-  font-family: inherit;
-  border-radius: 50%;
-  height: 5.5rem;
-  width: 5.5rem;
-  font-size: 3.25rem;
-  cursor: pointer;
-}
 
-.testimonials__btn:hover {
-  background-color: #555;
-}
+/* =========================================
+   Toolbox Section Styles
+   ========================================= */
 
-.testimonials__btn--left {
-  left: 7%;
-  transform: translate(-50%, -50%);
-}
-
-.testimonials__btn--right {
-  right: 7%;
-  transform: translate(50%, -50%);
-}
-
-/* ===== Slider Dots ===== */
-.testimonials__dots {
+/* -----------------------------
+   Toolbox Section Container
+   ----------------------------- */
+.toolbox {
+  width: 100%;
+  padding: 4rem 2rem;
+  background-color: var(--color-section-bg-2);
   display: flex;
   justify-content: center;
-  margin-top: 2rem;
-  gap: 0.5rem;
 }
 
-.testimonials__dots span {
+/* -----------------------------
+   Toolbox Inner Container
+   ----------------------------- */
+.toolbox__container {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+  margin: 0 auto; /* center container horizontally */
+}
+
+/* -----------------------------
+   Toolbox Intro (Title + Subtitle)
+   ----------------------------- */
+.toolbox__intro {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* Toolbox Title */
+.toolbox__title {
+  font-size: clamp(3rem, 5vw, 4.2rem);
+  font-weight: 700;
+  color: var(--color-black);
+  margin-bottom: 0.5rem;
+}
+
+/* Toolbox Subtitle */
+.toolbox__subtitle {
+  font-size: clamp(1.2rem, 5vw, 1.8rem);
+  font-weight: 400;
+  color: var(--color-muted);
+  line-height: 1.6;
+  text-align: center; /* center subtitle */
+  max-width: 800px; /* optional: limit width for readability */
+  margin: 0 auto; /* center subtitle horizontally */
+}
+
+/* -----------------------------
+   Toolbox Items Grid Layout
+   ----------------------------- */
+.toolbox__items {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 1.5rem;
+  justify-items: center;
+  align-items: start;
+  width: 100%;
+  padding: 1.5rem;
+  border: 0.8px solid #e5e7eb;
+}
+
+/* Responsive Grid Layout */
+@media (max-width: 1200px) {
+  .toolbox__items {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+@media (max-width: 992px) {
+  .toolbox__items {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .toolbox__items {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .toolbox__items {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* -----------------------------
+   Individual Toolbox Item
+   ----------------------------- */
+.toolbox__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover Effect for Toolbox Item */
+.toolbox__item:hover .toolbox__icon-wrapper {
+  transform: translateY(-10px);
+  border-color: var(--color-warning);
+}
+
+/* -----------------------------
+   Icon Wrapper (Outer Box)
+   ----------------------------- */
+.toolbox__icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 112px;
+  height: 112px;
+  border-radius: 20px;
+  background-color: rgb(255, 255, 255);
+  /* border: 0.8px solid #e5e7eb; */
+  box-sizing: border-box;
+  padding: 0;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+/* -----------------------------
+   Inner Icon Box
+   ----------------------------- */
+.toolbox__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 95px;
+  height: 95px;
+  border-radius: 12px;
+  background-color: rgb(237, 238, 240);
+  box-shadow: rgba(165, 174, 184, 0.32) 0px 2px 1.5px 0px inset;
+  border: 1.6px solid rgba(165, 174, 184, 0.1);
+  box-sizing: border-box;
+}
+
+/* Icon Inside Inner Box */
+.toolbox__icon i {
+  font-size: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* -----------------------------
+   Label Text Below Icon
+   ----------------------------- */
+.toolbox__label {
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #333;
+  margin-top: 0.5rem;
+}
+
+/* =========================================================
+   Contact Section Styles
+   Using Custom Color Palette (provided)
+   ========================================================= */
+
+/* =========================================================
+   Section Wrapper
+   ========================================================= */
+.contact-section {
+  background: var(--color-section-bg-1);
+  padding: 48px 20px;
+  font-family: "Rubik", system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  color: var(--color-text);
+}
+
+/* =========================================================
+   Container (centered max-width)
+   ========================================================= */
+.contact-section .container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* =========================================================
+   Intro (Title + Subtitle)
+   ========================================================= */
+.contact__intro {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.contact__title {
+  font-size: clamp(28px, 5vw, 42px);
+  font-weight: 700;
+  color: var(--color-heading);
+  margin-bottom: 12px;
+}
+
+.contact__subtitle {
+  font-size: clamp(16px, 4vw, 20px);
+  font-weight: 400;
+  color: var(--color-muted);
+  line-height: 1.6;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* =========================================================
+   Grid Layout (Form + Info)
+   ========================================================= */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--gap);
+  align-items: start;
+}
+
+/* =========================================================
+   Card Base
+   ========================================================= */
+.card {
+  background: var(--color-card-bg);
+  border-radius: 12px;
+  border: 1px solid var(--color-section-bg-3);
+  box-shadow: var(--shadow);
+  padding: 28px;
+}
+
+.card-title {
+  font-size: clamp(20px, 2.6vw, 28px);
+  margin: 0 0 12px;
+  font-weight: 700;
+  color: var(--color-heading);
+}
+
+/* =========================================================
+   Form Styles
+   ========================================================= */
+.contact-form {
+  width: 100%;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--form-gap);
+}
+
+.col-left input,
+.col-right textarea {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Labels */
+.field-label {
   display: block;
-  width: 12px;
-  height: 12px;
-  background-color: #ccc;
-  border-radius: 50%;
-  cursor: pointer;
+  font-size: 16px;
+  margin: 8px 0;
+  color: var(--color-heading);
+  font-weight: 500;
+}
+.field-label .muted {
+  color: var(--color-muted);
+  font-weight: 400;
+  font-size: 14px;
+  margin-left: 6px;
 }
 
-.testimonials__dots span.active {
-  background-color: #222;
+/* Inputs */
+input[type="text"],
+input[type="email"] {
+  height: 52px;
+  padding: 0 14px;
+  border-radius: 8px;
+  border: 1px solid var(--color-section-bg-3);
+  background: var(--color-white);
+  font-size: 16px;
+  color: var(--color-text);
+  outline: none;
+  transition: box-shadow 0.18s, border-color 0.18s;
+}
+
+input::placeholder {
+  color: #9aa3ae;
+}
+
+/* Textarea */
+textarea {
+  min-height: 260px;
+  max-height: 420px;
+  padding: 14px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid var(--color-section-bg-3);
+  resize: vertical;
+  line-height: 1.6;
+  color: var(--color-text);
+  outline: none;
+}
+
+/* Focus States */
+input:focus,
+textarea:focus {
+  border-color: var(--color-warning);
+  box-shadow: 0 6px 20px rgba(255, 193, 7, 0.12);
+}
+
+
+/* =========================================================
+   Submit Button
+   ========================================================= */
+.btn-submit {
+  width: 100%;
+  background: var(--color-warning);
+  color: var(--color-black);
+  border: none;
+  border-radius: 8px;
+  padding: 16px 20px;
+  font-size: clamp(16px, 1.2vw, 18px);
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 8px;
+  box-shadow: 0 6px 18px rgba(255, 193, 7, 0.14);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.btn-submit:hover {
+  transform: translateY(-2px);
+}
+
+.form-status {
+  margin-top: 12px;
+  font-size: 15px;
+  color: var(--color-muted);
+}
+
+/* =========================================================
+   Info Card (Right Column)
+   ========================================================= */
+.info-card .info-text {
+  color: var(--color-muted);
+  margin-bottom: 12px;
+  font-size: 15px;
+}
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+  display: grid;
+  gap: 14px;
+}
+.contact-list li {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+.contact-list i {
+  font-size: 22px;
+  color: var(--color-warning);
+  min-width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 193, 7, 0.06);
+  border-radius: 8px;
+}
+.contact-main {
+  display: block;
+  color: var(--color-heading);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* =========================================================
+   Responsive
+   ========================================================= */
+@media (max-width: 992px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  textarea {
+    min-height: 220px;
+  }
+  .recaptcha-placeholder {
+    width: 280px;
+  }
+}
+
+@media (max-width: 420px) {
+  .card {
+    padding: 20px;
+  }
+  .btn-submit {
+    padding: 14px;
+    font-size: 16px;
+  }
+  .contact-list i {
+    min-width: 32px;
+    height: 32px;
+  }
 }
 
 /* ===========================
