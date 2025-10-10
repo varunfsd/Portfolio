@@ -91,12 +91,12 @@ sections.forEach((section) => {
 =========================== */
 
 // Reusable function to handle smooth scrolling
-const handleNavClick = function (event) {
+const handleNavClick = function (blockType,event) {
   const targetId = event.target.dataset.target;
   const targetSection = document.getElementById(targetId); // Find the section by ID
   console.log(targetSection);
   if (!targetSection) return; // safety check
-  targetSection.scrollIntoView({ behavior: "smooth", block: "center" });
+  targetSection.scrollIntoView({ behavior: "smooth", block: blockType });
 };
 
 // Desktop navigation container
@@ -105,9 +105,11 @@ const desktopNav = document.querySelector(".nav__links");
 // Mobile navigation container
 const mobileNav = document.querySelector(".nav__mobile-links");
 
-// Attach the same scroll handler to both
-desktopNav.addEventListener("click", handleNavClick);
-mobileNav.addEventListener("click", handleNavClick);
+// Desktop scroll to center
+desktopNav.addEventListener("click", handleNavClick.bind(null, "center"));
+
+// Mobile scroll to start
+mobileNav.addEventListener("click", handleNavClick.bind(null, "start"));
 
 /* ===========================
    5. Sticky Navigation
