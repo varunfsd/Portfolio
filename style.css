@@ -295,6 +295,8 @@ body {
   text-align: center;
   padding: clamp(1.5rem, 4vw, 3rem);
   background: var(--color-hero-bg);
+    /* background-color: rgba(255, 193, 7, 0.06); */
+
 }
 
 .hero__content {
@@ -388,7 +390,7 @@ body {
   color: var(--color-muted);
   line-height: 1.7;
   margin-bottom: clamp(1.5rem, 3vw, 2rem);
-  font-size: clamp(1.4rem, 2vw, 1.8rem);
+  font-size: clamp(1.4rem, 2vw, 1.6rem);
 }
 
 /* Stats */
@@ -442,7 +444,7 @@ body {
   color: var(--color-muted);
   line-height: 1.6;
   margin-bottom: clamp(1.5rem, 3vw, 2rem);
-  font-size: clamp(1.4rem, 2vw, 1.8rem);
+  font-size: clamp(1.4rem, 2vw, 1.6rem);
 }
 
 /* Skill Bars */
@@ -525,6 +527,7 @@ body {
   flex-direction: column;
   /* justify-content: space-between; */
   cursor: pointer;
+  padding: 10px;
 }
 
 .project:hover {
@@ -536,6 +539,7 @@ body {
   width: 100%;
   display: block;
   object-fit: cover;
+  border-radius: clamp(0.5rem, 2vw, 1rem);
   /* aspect-ratio: 16/9; */
 }
 
@@ -548,7 +552,7 @@ body {
 }
 
 .project__description {
-  font-size: clamp(1.2rem, 5vw, 1rem);
+  font-size: clamp(1.4rem, 2vw, 1.6rem);
   color: var(--color-muted);
   /* margin: 0 clamp(0.8rem, 2vw, 1.2rem) clamp(0.8rem, 2vw, 1.2rem); */
   margin: 0 clamp(0.8rem, 2vw, 1.2rem);
@@ -559,9 +563,8 @@ body {
   /* margin: 1rem clamp(0.8rem, 2vw, 1.2rem); */
   margin: 1rem clamp(0.8rem, 2vw, 1.2rem) 1.5rem;
   padding: 0.6rem 1.2rem;
-  background-color: var(--color-black);
-  background-color: #333;
-  color: #fff;
+  background-color: var(--color-warning);
+  color: var(--color-white);
   font-size: 1.5rem;
   font-weight: 500;
   border-radius: 0.5rem;
@@ -726,7 +729,7 @@ body {
 }
 
 .testimonial__text {
-  font-size: clamp(0.9rem, 2vw, 1.6rem);
+  font-size: clamp(1.4rem, 2vw, 1.6rem);
   color: var(--color-muted);
   line-height: 1.6;
   margin-bottom: 2rem;
@@ -950,6 +953,7 @@ body {
 
 .experience__details {
   font-size: 1.5rem;
+  font-size: clamp(1.4rem, 2vw, 1.6rem);
   color: var(--color-muted, #555);
   line-height: 1.7;
 }
@@ -957,7 +961,6 @@ body {
 .experience__details br {
   margin-bottom: 0.5rem;
 }
-
 
 /* =========================================
    Toolbox Section Styles
@@ -1283,7 +1286,6 @@ textarea:focus {
   box-shadow: 0 6px 20px rgba(255, 193, 7, 0.12);
 }
 
-
 /* =========================================================
    Submit Button
    ========================================================= */
@@ -1317,7 +1319,8 @@ textarea:focus {
 .info-card .info-text {
   color: var(--color-muted);
   margin-bottom: 12px;
-  font-size: 15px;
+  font-size: clamp(1.4rem, 2vw, 1.6rem);
+  line-height: 1.5;
 }
 
 .contact-list {
@@ -1346,7 +1349,7 @@ textarea:focus {
   display: block;
   color: var(--color-heading);
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 /* =========================================================
