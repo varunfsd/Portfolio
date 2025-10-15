@@ -322,7 +322,7 @@ body {
 }
 
 .hero__subtitle {
-  font-size: clamp(1.4rem, 2vw, 1.7rem);
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
   margin-bottom: clamp(1.5rem, 3vw, 2rem);
   line-height: 1.6;
   color: var(--color-muted);
@@ -388,7 +388,7 @@ body {
   color: var(--color-muted);
   line-height: 1.7;
   margin-bottom: clamp(1.5rem, 3vw, 2rem);
-  font-size: clamp(1rem, 2.5vw, 1.6rem);
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
 }
 
 /* Stats */
@@ -442,7 +442,7 @@ body {
   color: var(--color-muted);
   line-height: 1.6;
   margin-bottom: clamp(1.5rem, 3vw, 2rem);
-  font-size: clamp(1rem, 2.5vw, 1.6rem);
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
 }
 
 /* Skill Bars */
@@ -502,7 +502,7 @@ body {
 }
 
 .projects__subtitle {
-  font-size: clamp(1.2rem, 5vw, 1.8rem);
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
   color: var(--color-muted);
   line-height: 1.6;
 }
@@ -632,7 +632,7 @@ body {
   padding: clamp(4rem, 6vw, 6rem) 2rem; /* vertical padding responsive */
   background-color: var(--color-section-bg-3);
   text-align: center;
-  background-image: linear-gradient(
+  /* background-image: linear-gradient(
     45deg,
     #d6dade 12.5%,
     transparent 0,
@@ -642,7 +642,7 @@ body {
     transparent 0,
     transparent
   );
-  background-size: 5px 5px;
+  background-size: 5px 5px; */
 }
 
 .testimonials__container {
@@ -664,7 +664,7 @@ body {
 }
 
 .testimonials__subtitle {
-  font-size: clamp(1.2rem, 5vw, 1.8rem);
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
   color: var(--color-muted);
 }
 
@@ -840,7 +840,7 @@ body {
 }
 
 .experience__description {
-  font-size: clamp(1.2rem, 5vw, 1.8rem);
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
   line-height: 1.6;
   color: var(--color-muted, #555);
   max-width: 700px;
@@ -972,6 +972,17 @@ body {
   background-color: var(--color-section-bg-2);
   display: flex;
   justify-content: center;
+  /* background-image: linear-gradient(
+    45deg,
+    #d6dade 12.5%,
+    transparent 0,
+    transparent 50%,
+    #d6dade 0,
+    #d6dade 62.5%,
+    transparent 0,
+    transparent
+  );
+  background-size: 5px 5px; */
 }
 
 /* -----------------------------
@@ -993,6 +1004,7 @@ body {
 .toolbox__intro {
   text-align: center;
   margin-bottom: 2rem;
+  /* border-bottom: 0.8px solid #e5e7eb; */
 }
 
 /* Toolbox Title */
@@ -1005,7 +1017,7 @@ body {
 
 /* Toolbox Subtitle */
 .toolbox__subtitle {
-  font-size: clamp(1.2rem, 5vw, 1.8rem);
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
   font-weight: 400;
   color: var(--color-muted);
   line-height: 1.6;
@@ -1161,7 +1173,7 @@ body {
 }
 
 .contact__subtitle {
-  font-size: clamp(16px, 4vw, 20px);
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
   font-weight: 400;
   color: var(--color-muted);
   line-height: 1.6;
